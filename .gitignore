@@ -50,3 +50,9 @@ build
 firebase.json
 .firebaserc
 *.log
+
+*.db
+
+functions/
+
+package-lock\.json

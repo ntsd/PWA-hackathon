@@ -4,6 +4,10 @@ var bodyParser = require('body-parser');
 var gcm = require('node-gcm');
 var app = express();
 
+var compression = require('compression');
+// compress responses
+app.use(compression());
+
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

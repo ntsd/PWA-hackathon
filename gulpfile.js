@@ -13,7 +13,7 @@ var htmlmin = require('gulp-htmlmin');
 
 
 gulp.task('css', function () {
-    return gulp.src('src/scss/*.scss')
+    return gulp.src('src/css/*.css')
         .pipe(sass().on('error', sass.logError))
         .pipe(concatCss("bundle.css"))
         .pipe(minifyCSS("bundle.css"))
@@ -23,12 +23,9 @@ gulp.task('css', function () {
 gulp.task('js', function() {
     return gulp.src(
         [
-            'src/js/jquery.min.js',
-            'src/js/moment.min.js',
             'src/js/*.js'
         ]
     )
-
         .pipe(concat('bundle.min.js'))
         .pipe(uglify('bundle.min.js'))
         .pipe(gulp.dest('build/js/'));
@@ -38,7 +35,7 @@ gulp.task('js', function() {
 gulp.task('min-html', function() {
     return gulp.src('./src/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest('./'));
+        .pipe(gulp.dest('./build'));
 });
 
 gulp.task('default', [ 'css', 'js', 'min-html' ]);

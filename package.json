@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run css && node server.js",
-    "css": "postcss -u autoprefixer -r css/*",
+    "start": "npm run css && node src/server.js",
+    "css": "postcss -u autoprefixer -r src/css/*",
     "postinstall": "npm run start"
   },
   "repository": {
@@ -24,6 +24,9 @@
     "node-gcm": "^0.14.0"
   },
   "devDependencies": {
+    "autoprefixer": "^6.4.0",
+    "postcss-cli": "^2.6.0",
+    "compression": "^1.6.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-concat-css": "^2.3.0",
@@ -39,5 +42,4 @@
     "multiplayer",
     "firebase"
   ]
-
 }

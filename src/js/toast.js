@@ -3,7 +3,7 @@
 
   function toast(msg, options) {
     if (!msg) return;
-    options = options || 3000;
+    options = options || 9000;
     
     var toastMsg = document.querySelector('.toast__msg');
     toastMsg.textContent = msg;
