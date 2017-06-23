@@ -1,0 +1,19 @@
+{
+  "name": "pwa-games",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntsd/PWA-hackathon.git"
+  },
+  "author": "ntsd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ntsd/PWA-hackathon/issues"
+  },
+  "homepage": "https://github.com/ntsd/PWA-hackathon#readme"
+}
