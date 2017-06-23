@@ -8,16 +8,6 @@ var compression = require('compression');
 // compress responses
 app.use(compression());
 
-var firebase = require("firebase");
-
-var config = {
-    apiKey: "AIzaSyD2LFUsEm4D3VQFLl4hCCYzzZPxptUUBZM",
-    authDomain: " active-reminder.firebaseapp.com",
-    databaseURL: "https://active-reminder.firebaseio.com/",
-    storageBucket: "active-reminder.appspot.com/"
-};
-firebase.initializeApp(config);
-
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
