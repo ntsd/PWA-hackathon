@@ -1,7 +1,7 @@
 {
   "name": "Progressive Games",
-  "short_name": "PWA",
-  "description": "Demo for progressive web app with push notifications, background sync etc.",
+  "short_name": "PWA-Game",
+  "description": "Simple Multiplayer Games",
   "start_url": "./index.html?utm=homescreen",
   "display": "standalone",
   "orientation": "portrait",
@@ -18,10 +18,10 @@
       "sizes": "512x512"
   }],
   "author": {
-    "name": "Gokulakrishnan Kalaikovan",
-    "website": "https://gokulkrishh.github.io",
-    "github": "https://github.com/gokulkrishh",
-    "source-repo": "https://github.com/gokulkrishh/demo-progressive-web-app"
+    "name": "ntsd",
+    "website": "https://ntsd.github.io",
+    "github": "https://github.com/ntsd",
+    "source-repo": "https://github.com/ntsd/PWA-hackathon"
   },
   "gcm_sender_id": "847244712742",
   "gcm_user_visible_only": true

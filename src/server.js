@@ -8,6 +8,16 @@ var compression = require('compression');
 // compress responses
 app.use(compression());
 
+var firebase = require("firebase");
+
+var config = {
+    apiKey: "AIzaSyD2LFUsEm4D3VQFLl4hCCYzzZPxptUUBZM",
+    authDomain: " active-reminder.firebaseapp.com",
+    databaseURL: "https://active-reminder.firebaseio.com/",
+    storageBucket: "active-reminder.appspot.com/"
+};
+firebase.initializeApp(config);
+
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -37,7 +47,7 @@ app.post('/send_notification', function (req, res) {
   var temp = req.body.endpoint.split('/');
   var regTokens = [temp[temp.length - 1]];
 
-  var sender = new gcm.Sender('AIzaSyCjrU5SqotSg2ybDLK_7rMMt9Rv0dMusvY'); //Replace with your GCM API key
+  var sender = new gcm.Sender('AAAAIAFnfEM:APA91bEuZ2X3Yyk1eI-St8mHLAbpAjvTBpRtRaAgVFXs4ttVyNh4wmKk-ULeA-x3CJxLEjEliC'); //Replace with your GCM API key
 
   // Now the sender can be used to send messages
   sender.send(message, { registrationTokens: regTokens }, function (error, response) {

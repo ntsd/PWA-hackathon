@@ -1,14 +1,13 @@
 //Cache polyfil to support cacheAPI in all browsers
 importScripts('./cache-polyfill.js');
 
-var cacheName = 'cache-v3';
+let cacheName = 'cache-v3';
 
 //Files to save in cache
-var files = [
+const files = [
   './',
   './index.html?utm=homescreen', //SW treats query string as new request
   'https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700', //caching 3rd party content
-  './css/styles.css',
   './images/icons/android-chrome-192x192.png',
   './images/push-on.png',
   './images/push-off.png',
@@ -53,7 +52,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
   console.info('Event: Fetch');
 
-  var request = event.request;
+  let request = event.request;
 
   //Tell the browser to wait for newtwork request and respond with below
   event.respondWith(
@@ -71,7 +70,7 @@ self.addEventListener('fetch', (event) => {
 
       //if request is not cached or navigation preload response, add it to cache
       return fetch(request).then((response) => {
-        var responseToCache = response.clone();
+        let responseToCache = response.clone();
         caches.open(cacheName).then((cache) => {
             cache.put(request, responseToCache).catch((err) => {
               console.warn(request.url + ': ' + err.message);
@@ -133,8 +132,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('push', (event) => {
   console.info('Event: Push');
 
-  var title = 'Push notification demo';
-  var body = {
+  const title = 'Push notification demo';
+  const body = {
     'body': 'click to return to application',
     'tag': 'demo',
     'icon': './images/icons/apple-touch-icon.png',
@@ -180,7 +179,7 @@ self.addEventListener('sync', (event) => {
 
 //Adding `notification` click event listener
 self.addEventListener('notificationclick', (event) => {
-  var url = 'https://demopwa.in/';
+  const url = 'https://demopwa.in/';
 
   //Listen to custom action buttons in push notification
   if (event.action === 'yes') {
@@ -198,8 +197,8 @@ self.addEventListener('notificationclick', (event) => {
       type: 'window'
     })
     .then((clients) => {
-      for (var i = 0; i < clients.length; i++) {
-        var client = clients[i];
+      for (let i = 0; i < clients.length; i++) {
+        let client = clients[i];
         //If site is opened, focus to the site
         if (client.url === url && 'focus' in client) {
           return client.focus();
