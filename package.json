@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run css && node server.js",
+    "css": "postcss -u autoprefixer -r css/*",
+    "postinstall": "npm run start"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,27 @@
   "bugs": {
     "url": "https://github.com/ntsd/PWA-hackathon/issues"
   },
-  "homepage": "https://github.com/ntsd/PWA-hackathon#readme"
+  "homepage": "https://github.com/ntsd/PWA-hackathon#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "node-gcm": "^0.14.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-csso": "^3.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  },
+  "keywords": [
+    "javascript",
+    "pwa",
+    "games",
+    "multiplayer",
+    "firebase"
+  ]
+
 }
