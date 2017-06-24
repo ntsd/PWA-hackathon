@@ -7,19 +7,33 @@ function signIn(){
     firebase.auth().signInWithRedirect(provider);
     firebase.auth().getRedirectResult().then(function (result) {
         setCookie("uid", result.user.uid);
+        setCookie("displayName", result.user.displayName);
     }).catch(function (error) {
         console.log("Error :" + error.message)
     });
 }
 
-//sign-in
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        console.log(user);
-        if (getCookie("uid") != user.uid){
-            signIn();
+function signOut(){
+    firebase.auth().signOut().then(function() {
+        setCookie("uid", "");
+        setCookie("displayName", "");
+    }).catch(function(error) {
+        console.log("Error :" + error.message)
+    });
+}
+
+function auth() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user);
+            if (getCookie("uid") != user.uid){
+                signIn();
+            }
+        } else {
+            signIn()
         }
-    } else {
-        signIn()
-    }
-});
+    });
+}
+
+var signOutButton = document.getElementById("signOutButton")
+signOutButton.onclick = signOut;

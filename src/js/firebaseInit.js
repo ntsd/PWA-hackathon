@@ -5,4 +5,4 @@ var config = {
     storageBucket: "active-reminder.appspot.com/"
 };
 firebase.initializeApp(config);
-var fbDb = firebase.database();
+var fbDb = firebase.database().ref("data");

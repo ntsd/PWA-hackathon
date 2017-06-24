@@ -11,4 +11,5 @@
         bgSyncElement.classList.remove('hide'); //Once sync event fires, show register toggle button
         bgSyncTextElement.setAttribute('hidden', true); //Once sync event fires, remove registered label
     });
+
 })();

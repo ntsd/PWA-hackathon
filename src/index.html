@@ -32,7 +32,7 @@
 </head>
 <body>
 <!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
@@ -47,7 +47,8 @@
                     data-upgraded=",MaterialButton,MaterialRipple">
                 <i class="material-icons">more_vert</i>
                 <span class="mdl-button__ripple-container">
-                        <span class="mdl-ripple is-animating" style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(13px, 15px);"></span>
+                        <span class="mdl-ripple is-animating"
+                              style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(13px, 15px);"></span>
                     </span>
             </button>
         </div>
@@ -55,40 +56,47 @@
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">PWA-Game</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" id="signOutButton">Sign Out</a>
         </nav>
     </div>
     <main class="mdl-layout__content">
-        <div class="page-content">
-            <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-cell--12-col">
-                <thead>
-                <tr>
-                    <th class="sort" data-sort="lobby_id">#</th>
-                    <th class="mdl-data-table__cell--non-numeric sort" data-sort="name">Name</th>
-                    <th class="sort" data-sort="game">Game</th>
-                    <th class="sort" data-sort="players">Players</th>
-                </tr>
-                </thead>
-                <tbody class="list" id="lobbies-tbody">
-                <!--<tr>-->
-                <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric material">Acrylic (Transparent)</td>-->
-                <!--<td class="quantity">25</td>-->
-                <!--<td class="price">$2.90</td>-->
-                <!--</tr>-->
-                </tbody>
-            </table>
+        <div class="mdl-grid page-content">
+            <div class="mdl-grid  mdl-cell mdl-cell--12-col">
+                <table id='mdl-table' class="mdl-js-data-table mdl-cell--12-col">
+                    <tr>
+                        <!--<th class="sort" data-sort="lobby_id">#</th>-->
+                        <th class="mdl-data-table__cell--non-numeric sort" data-sort="name">Name</th>
+                        <th class="sort" data-sort="game">Game</th>
+                        <th class="sort" data-sort="players">Players</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list" id="lobbies-tbody">
+                    <!--<tr>-->
+                    <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric material">Acrylic (Transparent)</td>-->
+                    <!--<td class="quantity">25</td>-->
+                    <!--<td class="price">$2.90</td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="position: absolute;
+               top: 90%;
+               right: 10%;
+               transform: translate(0px, -28px);
+               z-index: 900;" id="newLobbyButton">New Lobby
+            </button>
         </div>
     </main>
 </div>
 
+<!--models-->
+<script src="js/models.js"></script>
 <!-- JS Files  -->
 <script src="./js/toast.js"></script>
 <script src="./js/main.js"></script>
 <script src="./js/offline.js"></script>
 
+<script src="./js/helper.js"></script>
 <script src="./js/firebaseInit.js"></script>
 <script src="./js/cookies.js"></script>
 <script src="./js/auth.js"></script>
@@ -97,9 +105,8 @@
 <script src="./js/push.js"></script>
 <script src="./js/sync.js"></script>
 <script src="./js/share.js"></script>
-<script src="./js/menu.js"></script>
+
 <script src="js/lobbies.js"></script>
-<script src="js/lobby.js"></script>
 <!-- My Google Analytics Report -->
 <script>
     (function (i, s, o, g, r, a, m) {
