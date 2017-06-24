@@ -27,6 +27,10 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/lobby', function (req, res) {
+    res.sendFile(__dirname + '/lobby.html');
+});
+
 //To receive push request from client
 app.post('/send_notification', function (req, res) {
   if (!req.body) {

@@ -54,15 +54,37 @@
         </div>
     </header>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">PWA-Game</span>
+        <header class="" style="box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 13px;
+  height: 75px;">
+            <div class="demo-avatar-dropdown" style="display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;">
+                <span id="displayNameNav">Guest</span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons" role="presentation">arrow_drop_down</i>
+                    <span class="visuallyhidden">Accounts</span>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                    <li class="mdl-menu__item" id="signInButton">Sign In</li>
+                    <li class="mdl-menu__item" id="signOutButton">Sign Out</li>
+                </ul>
+            </div>
+        </header>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" id="signOutButton">Sign Out</a>
+            <a class="mdl-navigation__link is-active" id="lobbyHomeButton">Lobby</a>
         </nav>
     </div>
     <main class="mdl-layout__content">
         <div class="mdl-grid page-content">
-            <div class="mdl-grid  mdl-cell mdl-cell--12-col">
-                <table id='mdl-table' class="mdl-js-data-table mdl-cell--12-col">
+            <div class="mdl-cell mdl-cell--12-col">
+                <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-cell--12-col">
                     <tr>
                         <!--<th class="sort" data-sort="lobby_id">#</th>-->
                         <th class="mdl-data-table__cell--non-numeric sort" data-sort="name">Name</th>
@@ -70,17 +92,13 @@
                         <th class="sort" data-sort="players">Players</th>
                     </tr>
                     </thead>
-                    <tbody class="list" id="lobbies-tbody">
-                    <!--<tr>-->
-                    <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric material">Acrylic (Transparent)</td>-->
-                    <!--<td class="quantity">25</td>-->
-                    <!--<td class="price">$2.90</td>-->
-                    <!--</tr>-->
+                    <tbody class="list" id="lobbiesTable">
                     </tbody>
                 </table>
             </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="position: absolute;
-               top: 90%;
+
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="position: fixed;
+               top: 95%;
                right: 10%;
                transform: translate(0px, -28px);
                z-index: 900;" id="newLobbyButton">New Lobby
