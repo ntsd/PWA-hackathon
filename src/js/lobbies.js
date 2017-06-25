@@ -4,10 +4,10 @@
     function createLobby() {
         var lobby = new Lobby();
         lobby.setName(getCookie("displayName")+" lobby");
-        lobby.setGame("hangman");
-        lobby.setMinPlayer();
-        lobby.setMaxPlayer();
-        lobby.setEndPoint();
+        lobby.setGameName("hangman");
+        lobby.setMinPlayer(1);
+        lobby.setMaxPlayer(4);
+        lobby.setEndPoint("/games/hangman");
         fbDb.child("lobbies/" + lobby.id).set(lobby);
         document.location = "lobby.html?id="+lobby.id;
     }
@@ -22,7 +22,7 @@
         tdName.innerHTML = lobby.name;
         trLobby.appendChild(tdName);
         var tdGame = document.createElement("td");
-        tdGame.innerHTML = lobby.game;
+        tdGame.innerHTML = lobby.gameName;
         trLobby.appendChild(tdGame);
         var tdPlayer = document.createElement("td");
         try{

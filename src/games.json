@@ -19,7 +19,8 @@
     "src": "games/hangman/index.html",
     "minPlayer": 1,
     "maxPlayer": 4,
-    "endPoint": "/games/hangman"
+    "endPoint": "/games/hangman",
+    "source": "https://github.com/code-newbies/js-tuesday-hangman"
   },
   "space-war":
   {
@@ -35,4 +36,12 @@
     "minPlayer": 2,
     "maxPlayer": 2,
     "endPoint": "/games/maze"
-  }}
+  },
+  "xo":{
+    "name": "Tic Tac Toe",
+    "src": "games/xo/index.html",
+    "minPlayer": 2,
+    "maxPlayer": 2,
+    "endPoint": "/games/xo"
+  }
+}

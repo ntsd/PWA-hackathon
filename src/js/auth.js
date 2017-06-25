@@ -39,7 +39,7 @@ function getUser() {
     }
 }
 
-function setAuthElements() {
+function setAuthElements(thisUser) {
     var signOutButton = document.getElementById("signOutButton");
     if (!signOutButton){
         return
@@ -49,10 +49,9 @@ function setAuthElements() {
     var signInButton = document.getElementById("signInButton");
     signInButton.onclick = signIn;
 
-    var myUser = getUser();
     var displayNameNav = document.getElementById("displayNameNav");
-    displayNameNav.innerHTML = myUser.displayName;
-    if(myUser.displayName.slice(0, 5) == "Guest"){
+    displayNameNav.innerHTML = thisUser.displayName;
+    if(thisUser.displayName.slice(0, 5) == "Guest"){
         signOutButton.style.display = 'none';
         signInButton.style.display = '';
     }else{
@@ -61,11 +60,15 @@ function setAuthElements() {
     }
 }
 
+
+var thisUser;
 firebase.auth().getRedirectResult().then(function (result) {
     setCookie("uid", result.user.uid);
     setCookie("displayName", result.user.displayName);
-    setAuthElements()
+    thisUser = getUser();
+    setAuthElements(thisUser)
 }).catch(function () {
     checkAuth();
-    setAuthElements()
+    thisUser = getUser();
+    setAuthElements(thisUser)
 });

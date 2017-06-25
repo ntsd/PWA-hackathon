@@ -31,6 +31,10 @@ app.get('/lobby', function (req, res) {
     res.sendFile(__dirname + '/lobby.html');
 });
 
+app.get('/games/hangman', function (req, res) {
+    res.sendFile(__dirname + 'games/hangman/index.html');
+});
+
 //To receive push request from client
 app.post('/send_notification', function (req, res) {
   if (!req.body) {

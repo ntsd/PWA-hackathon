@@ -5,6 +5,8 @@
     var lobbyId = gup('id');
     var playerGrid = document.getElementById("player-grid");
     var playersRef = fbDb.child("lobbies/" + lobbyId + "/players");
+    var lobbyRef = fbDb.child("lobbies/" + lobbyId);
+    var gameStarted = 0;
 
     function updateElements() {
         for(var i=0;i<players.length;i++){
@@ -30,9 +32,16 @@
         [].forEach.call(allPlayerCard, function (playerCard) {
             count += /player-card-on/.test(playerCard.className);
         });
-        if(count == len){
-            console.log("game start")
+        lobbyRef.once('value').then(function(snapshot) {
+            var lobby = snapshot.val();
+            console.log(lobby,count == len , count<=lobby.maxPlayer , count>=lobby.minPlayer);
+        if(count == len && count<=lobby.maxPlayer && count>=lobby.minPlayer){
+            gameStarted = 1;
+            var player = new Player(thisUser.id,thisUser.displayName);
+            fbDb.child("games/"+lobbyId+"/players/"+ player.id).set(player);
+            document.location = lobby.endPoint+"?id="+lobby.id;
         }
+        });
     }
 
     function addPlayer(player) {
@@ -61,7 +70,7 @@
     }
 
     function enterRoom() {
-        thisPlayer = new Player(getCookie("uid")+"ttt", getCookie("displayName"));
+        thisPlayer = new Player(getCookie("uid"), getCookie("displayName"));
         playersRef.child(thisPlayer.id).set(thisPlayer);
     }
 
@@ -80,14 +89,19 @@
     });
 
     window.addEventListener("beforeunload", function (e) {
-        var count = 0;
-        playersRef.on("child_added", function(snapshot) {
-            count++;
-        });
-        if(count <= 1){
-            fbDb.child("lobbies/" + lobbyId).remove();
-        }else {
-            playersRef.child(thisPlayer.id).remove();
+        if(!gameStarted) {
+            var count = 0;
+            playersRef.on("child_added", function (snapshot) {
+                count++;
+            });
+            if (count <= 1) {
+                lobbyRef.remove();
+            } else {
+                playersRef.child(thisPlayer.id).remove();
+            }
+        }
+        else {
+            lobbyRef.remove();
         }
     });
 

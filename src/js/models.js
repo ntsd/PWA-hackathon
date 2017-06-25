@@ -14,7 +14,34 @@ class Player{
         this.id = id;
         this.displayName = displayName;
         this.ready = false;
-        this.isHead = false
+        this.isHead = false;
+        this.score = 0
+    }
+}
+
+class Game{
+    constructor() {
+        this.id = randomString(16);
+    }
+
+    setName(name){
+        this.name = name;
+    }
+
+    setMinPlayer(minPlayer){
+        this.minPlayer = minPlayer
+    }
+
+    setMaxPlayer(maxPlayer){
+        this.maxPlayer = maxPlayer
+    }
+
+    setEndPoint(endPoint){
+        this.endPoint = endPoint
+    }
+
+    setPlayers(players){
+        this.players = players;
     }
 }
 
@@ -44,6 +71,13 @@ class Lobby {
 
     }
 
+    startGame() {
+    }
+
+    setGameName(gameName){
+        this.gameName = gameName;
+    }
+
     setMinPlayer(minPlayer){
         this.minPlayer = minPlayer
     }
@@ -54,8 +88,5 @@ class Lobby {
 
     setEndPoint(endPoint){
         this.endPoint = endPoint
-    }
-
-    startGame() {
     }
 }
