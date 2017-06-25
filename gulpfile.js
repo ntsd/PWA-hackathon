@@ -33,8 +33,7 @@ gulp.task('js', function() {
 
 
 gulp.task('min-html', function() {
-    return gulp.src('./src/*.html')
-        .pipe(htmlmin({collapseWhitespace: true}))
+    return gulp.src('./src/*.html')// .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./build'));
 });
 
