@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>PWA Games</title>
@@ -26,9 +26,10 @@
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700">
     <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/styles.js.css">
     <script src="js/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="js/firebase.js"></script>
 </head>
 <body>
 <!-- Always shows a header, even in smaller screens. -->
@@ -37,34 +38,15 @@
         <div class="mdl-layout__header-row">
             <!-- Title -->
             <span class="mdl-layout-title">PWA-Game</span>
-            <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
                 <!--<a class="mdl-navigation__link" href="">Link</a>-->
             </nav>
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn"
-                    data-upgraded=",MaterialButton,MaterialRipple">
-                <i class="material-icons">more_vert</i>
-                <span class="mdl-button__ripple-container">
-                        <span class="mdl-ripple is-animating"
-                              style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(13px, 15px);"></span>
-                    </span>
-            </button>
         </div>
     </header>
     <div class="mdl-layout__drawer">
-        <header class="" style="box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 13px;
-  height: 75px;">
-            <div class="demo-avatar-dropdown" style="display: flex;
-  position: relative;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;">
+        <header class="menu-user-head">
+            <div class="menu-user-head-down">
                 <span id="displayNameNav">Guest</span>
                 <div class="mdl-layout-spacer"></div>
                 <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -78,7 +60,7 @@
             </div>
         </header>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link is-active" id="lobbyHomeButton">Lobby</a>
+            <a class="mdl-navigation__link is-active" id="lobbyHomeButton">Lobbies</a>
         </nav>
     </div>
     <main class="mdl-layout__content">
@@ -86,7 +68,7 @@
             <div class="mdl-cell mdl-cell--12-col">
                 <table id='mdl-table' class="mdl-data-table mdl-js-data-table mdl-cell--12-col">
                     <tr>
-                        <!--<th class="sort" data-sort="lobby_id">#</th>-->
+                        <!--<th class="sort" data-sort="id">Id</th>-->
                         <th class="mdl-data-table__cell--non-numeric sort" data-sort="name">Name</th>
                         <th class="sort" data-sort="game">Game</th>
                         <th class="sort" data-sort="players">Players</th>
@@ -97,11 +79,7 @@
                 </table>
             </div>
 
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="position: fixed;
-               top: 95%;
-               right: 10%;
-               transform: translate(0px, -28px);
-               z-index: 900;" id="newLobbyButton">New Lobby
+            <button class="onscreen-fixed-bottom-right mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="newLobbyButton">New Lobby
             </button>
         </div>
     </main>

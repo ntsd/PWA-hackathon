@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Lobby</title>
+    <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0288d1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="css/styles.js.css">
+    <script src="js/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/firebase.js"></script>
 </head>
-<body>
+<body style="background-color: #757575">
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+            <div class="mdl-grid" id="player-grid">
+                <!--<div class="player-card mdl-cell mdl-cell&#45;&#45;6-col player-card-off mdl-card__title-text mdl-color-text&#45;&#45;white" id="player-k9x154ttt">Testttt</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="onscreen-fixed-bottom-left">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="exit-button">
+            Exit
+        </button>
+    </div>
+    <div class="onscreen-fixed-bottom-right">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" id="ready-button">
+            Ready
+        </button>
+    </div>
 
+    <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title">Waiting for other players..</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Game will start when all people ready.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+            <button type="button" class="mdl-button close">Not Ready</button>
+        </div>
+    </dialog>
+
+    <script src="js/models.js"></script>
+    <script src="./js/helper.js"></script>
+    <script src="./js/firebaseInit.js"></script>
+    <script src="./js/cookies.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="js/gameLobby.js"></script>
 </body>
 </html>

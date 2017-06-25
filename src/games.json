@@ -1,0 +1,38 @@
+{"draw-line":{
+    "name": "Draw Line",
+    "src": "games/draw_line/index.html",
+    "minPlayer": 2,
+    "maxPlayer":6,
+    "endPoint": "/games/draw-line"
+  },
+  "pong":
+  {
+    "name": "Pong",
+    "src": "games/pong/index.html",
+    "minPlayer": 2,
+    "maxPlayer": 4,
+    "endPoint": "/games/pong"
+  },
+"hangman":
+  {
+    "name": "Hangman",
+    "src": "games/hangman/index.html",
+    "minPlayer": 1,
+    "maxPlayer": 4,
+    "endPoint": "/games/hangman"
+  },
+  "space-war":
+  {
+    "name": "Space War",
+    "src": "games/spacewar/index.html",
+    "minPlayer": 2,
+    "maxPlayer": 4,
+    "endPoint": "/games/spacewar"
+  },
+  "maze":  {
+    "name": "Maze",
+    "src": "games/maze/index.html",
+    "minPlayer": 2,
+    "maxPlayer": 2,
+    "endPoint": "/games/maze"
+  }}

@@ -17,15 +17,12 @@ function signOut(){
     location.reload();
 }
 
-function auth() {
+function checkAuth() {
     firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
-                console.log(user);
                 if (getCookie("uid") != user.uid){
                     signIn();
                 }
-            } else {
-                signIn()
             }
     });
 }
@@ -44,17 +41,18 @@ function getUser() {
 
 function setAuthElements() {
     var signOutButton = document.getElementById("signOutButton");
+    if (!signOutButton){
+        return
+    }
     signOutButton.onclick = signOut;
 
     var signInButton = document.getElementById("signInButton");
     signInButton.onclick = signIn;
 
     var myUser = getUser();
-    console.log(myUser);
     var displayNameNav = document.getElementById("displayNameNav");
     displayNameNav.innerHTML = myUser.displayName;
-
-    if(myUser.uid == ""){
+    if(myUser.displayName.slice(0, 5) == "Guest"){
         signOutButton.style.display = 'none';
         signInButton.style.display = '';
     }else{
@@ -67,6 +65,7 @@ firebase.auth().getRedirectResult().then(function (result) {
     setCookie("uid", result.user.uid);
     setCookie("displayName", result.user.displayName);
     setAuthElements()
-}).catch(function (error) {
+}).catch(function () {
+    checkAuth();
     setAuthElements()
 });

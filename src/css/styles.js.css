@@ -1,0 +1,64 @@
+
+.menu-user-head {
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    padding: 13px;
+    height: 75px;
+}
+.menu-user-head-down {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+}
+.player-card{
+    padding: 5%;
+    background-color: gray;
+}
+
+.player-card-off {
+    background-color: #607D8B;
+}
+
+.player-card-on{
+    background-color: #CFD8DC;
+}
+
+.onscreen-fixed-bottom-right {
+    position: fixed;
+    top: 93%;
+    right: 10%;
+    -webkit-transform: translate(0px, -28px);
+            transform: translate(0px, -28px);
+    z-index: 900;
+}
+
+.onscreen-fixed-bottom-left {
+    position: fixed;
+    top: 93%;
+    left: 10%;
+    -webkit-transform: translate(0px, -28px);
+    transform: translate(0px, -28px);
+    z-index: 900;
+}
+
+.lobby.waiting.player-card {
+
+}

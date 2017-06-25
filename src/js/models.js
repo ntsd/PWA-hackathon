@@ -1,7 +1,22 @@
-var User = function(uid, displayName) {
-    this.uid = uid;
-    this.displayName = displayName;
-};
+// var User = function(id, displayName) {
+//     this.id = id;
+//     this.displayName = displayName;
+// };
+class User{
+    constructor(id, displayName) {
+        this.id = id;
+        this.displayName = displayName;
+    }
+}
+
+class Player{
+    constructor(id, displayName) {
+        this.id = id;
+        this.displayName = displayName;
+        this.ready = false;
+        this.isHead = false
+    }
+}
 
 class Lobby {
     constructor() {
@@ -27,6 +42,18 @@ class Lobby {
 
     checkPlayer(){
 
+    }
+
+    setMinPlayer(minPlayer){
+        this.minPlayer = minPlayer
+    }
+
+    setMaxPlayer(maxPlayer){
+        this.maxPlayer = maxPlayer
+    }
+
+    setEndPoint(endPoint){
+        this.endPoint = endPoint
     }
 
     startGame() {

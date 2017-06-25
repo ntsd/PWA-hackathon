@@ -26,12 +26,12 @@
         registration.pushManager.getSubscription()
         .then(function (subscription) {
           //If already access granted, enable push button status
-          if (subscription) {
-            changePushStatus(true);
-          }
-          else {
-            changePushStatus(false);
-          }
+          // if (subscription) {
+          //   changePushStatus(true);
+          // }
+          // else {
+          //   changePushStatus(false);
+          // }
         })
         .catch(function (error) {
           console.error('Error occurred while enabling push ', error);
@@ -95,29 +95,29 @@
   }
 
   //To change status
-  function changePushStatus(status) {
-    fabPushElement.dataset.checked = status;
-    fabPushElement.checked = status;
-    if (status) {
-      fabPushElement.classList.add('active');
-      fabPushImgElement.src = '../images/push-on.png';
-    }
-    else {
-     fabPushElement.classList.remove('active');
-     fabPushImgElement.src = '../images/push-off.png';
-    }
-  }
+  // function changePushStatus(status) {
+  //   fabPushElement.dataset.checked = status;
+  //   fabPushElement.checked = status;
+  //   if (status) {
+  //     fabPushElement.classList.add('active');
+  //     fabPushImgElement.src = '../images/push-on.png';
+  //   }
+  //   else {
+  //    fabPushElement.classList.remove('active');
+  //    fabPushImgElement.src = '../images/push-off.png';
+  //   }
+  // }
 
   //Click event for subscribe push
-  fabPushElement.addEventListener('click', function () {
-    var isSubscribed = (fabPushElement.dataset.checked === 'true');
-    if (isSubscribed) {
-      unsubscribePush();
-    }
-    else {
-      subscribePush();
-    }
-  });
+  // fabPushElement.addEventListener('click', function () {
+  //   var isSubscribed = (fabPushElement.dataset.checked === 'true');
+  //   if (isSubscribed) {
+  //     unsubscribePush();
+  //   }
+  //   else {
+  //     subscribePush();
+  //   }
+  // });
 
   //Form data with info to send to server
   function sendPushNotification() {
