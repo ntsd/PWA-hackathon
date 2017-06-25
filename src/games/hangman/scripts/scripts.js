@@ -3,12 +3,14 @@
     /*
      * Pick from alphabet keypad. Returns the letter chosen.
      */
+    var myClick = 0;
     $("#alphabet-keypad").on("click", ".letter-button", pickLetterClick);
 
     function pickLetterClick() {
         var letterElement = $(this);
         var letterPicked = letterElement.html();
         pickLetter(letterPicked);
+        myClick = 1;
     }
 
     function letterElementUpdate(letter) {
@@ -28,6 +30,13 @@
         while (ind !== -1) {
             resultMatches.push(ind);
             ind = currentWord.indexOf(letterPicked, ind + 1);
+            // add score
+            if(myClick == 1){
+                playersRef.child("/"+thisUser.id).once('value').then(function(snapshot) {
+                    playersRef.child("/"+thisUser.id+"/score").set(snapshot.val().score + 2);
+                });
+                myClick = 0;
+            }
         }
 
         //if resultMatches is greater than 0 proceed to place them in the dom
@@ -55,7 +64,7 @@
     function displayCongratulatoryMessageOnWin() {
         var correctlyGuessedLettersCount = $(".is-letter > span").length;
         if (correctlyGuessedLettersCount === currentWord.length) {
-            $("#congratulatory_message").modal('show');
+            $("#congratulatory_message").appendTo("body").modal('show');
         }
     }
 
@@ -63,7 +72,7 @@
         var incorrectlyGuessedLettersCount = $("#letter-graveyard > div").length;
         //If number of letters guessed is equal to maxParts
         if (incorrectlyGuessedLettersCount === 7) {
-            $("#gameover_message").modal('show');
+            $("#gameover_message").appendTo("body").modal('show');
             var gameOverMessage = "Uh oh. You took too many tries to guess the word. The correct word is - '" + currentWord + "'. Better luck next time.";
             $(".lead").text(gameOverMessage);
         }
@@ -152,11 +161,17 @@
         return word;
     }
 
-    function parseCurrentWordFull(currentWordFull) {
+    function setWordToBeGuessed(currentWordFullIn) {
+        if(!currentWordFullIn){
+            currentWordFull = wordSelect(hangmanWords);//IMPORTANT: replace the number with wordSelect (the function) for production use
+            wordRef.push(currentWordFull);
+            return;
+        }
+        currentWordFull = currentWordFullIn;
+        // parseCurrentWordFull(currentWordFull);
         //set an all upper case version of the current word
         currentWord = currentWordFull.toUpperCase();
         //creates blocks in the DOM indicating where there are letters and spaces
-
 
         currentWord.split("").map(function (character) {
             var guessWordBlock = document.getElementById("word-to-guess");
@@ -174,11 +189,7 @@
         });
     }
 
-    function setWordToBeGuessed() {
-        currentWordFull = wordSelect(hangmanWords);//IMPORTANT: replace the number with wordSelect (the function) for production use
-        wordRef.push(currentWordFull);
-        parseCurrentWordFull(currentWordFull)
-    }
+
 
     var currentWordFull;
     var currentWord;
@@ -199,18 +210,43 @@
         removeGraveyardLetters();
         removeCorrectlyGuessedLetters();
         removeFillInTheBlanksAroundOldWord();
-        parseCurrentWordFull(data.val())
+        setWordToBeGuessed(data.val())
     });
 
+    var sscoreboardNevBar = document.getElementById("scoreboard-nev-bar");
+    
+    function addPlayerScoreElement(player) {
+        var div = document.createElement("div");
+        div.className = "mdl-navigation__link";
+        div.id = "player-"+player.id;
+        div.innerHTML = player.displayName+" : "+player.score;
+        sscoreboardNevBar.appendChild(div);
+    }
+    
+    function updatePlayerScore(player) {
+        var div = document.getElementById("player-"+player.id);
+        div.innerHTML = player.displayName+" : "+player.score;
+    }
+    
     var count = 0;
     playersRef.on("child_added", function (snapshot) {
         if(count==0 && thisUser.id == snapshot.key){
             console.log("Generate Word");
-            setWordToBeGuessed();
+            var currentWordFull = wordSelect(hangmanWords);
+            wordRef.push(currentWordFull);
+            setWordToBeGuessed()
         }
         count++;
+        addPlayerScoreElement(snapshot.val());
     });
 
+    playersRef.on("child_changed", function (snapshot) {
+        updatePlayerScore(snapshot.val())
+    });
+
+    document.getElementById("exit-button").onclick = function () {
+        document.location = "/";
+    };
     // wordRef.on('child_changed', function (data) {
     //     console.log("child_changed");
     //     console.log(data.val());

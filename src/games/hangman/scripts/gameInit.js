@@ -20,18 +20,18 @@ function pickLetter(letter) {
     lettersPickedRef.push(letter)
 }
 
-window.addEventListener("beforeunload", function (e) {
-    if(1){//!gameStarted){
-        var count = 0;
-        playersRef.on("child_added", function(snapshot) {
-            count++;
-        });
-        if(count <= 1){
-            gamesRef.remove();
-        }else {
-            playersRef.child(thisPlayer.id).remove();
-        }
-    }
-});
+// window.addEventListener("beforeunload", function (e) {
+//     if(1){//!gameStarted){
+//         var count = 0;
+//         playersRef.on("child_added", function(snapshot) {
+//             count++;
+//         });
+//         if(count <= 1){
+//             gamesRef.remove();
+//         }else {
+//             playersRef.child(thisPlayer.id).remove();
+//         }
+//     }
+// });
 
 

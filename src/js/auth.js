@@ -61,6 +61,7 @@ function setAuthElements(thisUser) {
 }
 
 
+
 var thisUser;
 firebase.auth().getRedirectResult().then(function (result) {
     setCookie("uid", result.user.uid);

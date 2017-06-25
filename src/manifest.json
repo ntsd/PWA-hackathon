@@ -1,7 +1,7 @@
 {
-  "name": "Progressive Games",
-  "short_name": "PWA-Game",
-  "description": "Simple Multiplayer Games",
+  "name": "PWA Games Lobbies",
+  "short_name": "PWA-Lobbies",
+  "description": "Simple Multiplayer Lobby Games",
   "start_url": "./index.html?utm=homescreen",
   "display": "standalone",
   "orientation": "portrait",

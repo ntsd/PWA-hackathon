@@ -9,118 +9,148 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../../css/material.min.css">
     <script src="../../js/firebase.js"></script>
 </head>
 <body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <div class="mdl-layout-title">Hangman</div>
+            <div class="mdl-layout-spacer"></div>
 
-<div class="modal fade" id="congratulatory_message" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">CONGRATULATIONS!</h4>
-            </div>
-            <div class="modal-body">
-                <h5>Congratulations, you've won the game!!</h5>
-            </div>
-            <div class="modal-footer">
-                <button class="btn reset" data-dismiss="modal"> Close and Reset</button>
-            </div>
         </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Scoreboard</span>
+        <nav class="mdl-navigation" id="scoreboard-nev-bar">
+            <!--<div class="mdl-navigation__link" >Link</div>-->
+            <!--<a class="mdl-navigation__link" href="">Link</a>-->
+        </nav>
     </div>
-</div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div class="modal fade" id="congratulatory_message" role="dialog" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">CONGRATULATIONS!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Congratulations, you've won the game!!</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn reset" data-dismiss="modal"> Close and Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-<div class="modal fade" id="gameover_message" role="dialog" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">You lost the game!</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
+                    <div class="modal fade" id="gameover_message" role="dialog" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">You lost the game!</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-8 col-md-offset-2">
+                                                <img class="center-block" src="img/deadDude.png" alt="Dude dead!">
+                                            </div><!--cold-md-8-->
+                                        </div><!--.row-->
+                                        <div class="row">
+                                            <div class="col-md-10 col-md-offset-1">
+                                                <p class="lead"></p>
+                                            </div><!--./col-md-8-->
+                                        </div><!--/.row-->
+                                    </div><!--/.container-fluid-->
+                                </div><!--/.modal-body-->
+                                <div class="modal-footer">
+                                    <button class="btn reset" data-dismiss="modal"> Close and Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <img class="center-block" src="img/deadDude.png" alt="Dude dead!">
-                        </div><!--cold-md-8-->
-                    </div><!--.row-->
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <p class="lead"></p>
-                        </div><!--./col-md-8-->
-                    </div><!--/.row-->
-                </div><!--/.container-fluid-->
-            </div><!--/.modal-body-->
-            <div class="modal-footer">
-                <button class="btn reset" data-dismiss="modal"> Close and Reset</button>
+                        <div id="alphabet-keypad" class="col-xs-10">
+                            <div class="letter-button" id="A">A</div>
+                            <div class="letter-button" id="B">B</div>
+                            <div class="letter-button" id="C">C</div>
+                            <div class="letter-button" id="D">D</div>
+                            <div class="letter-button" id="E">E</div>
+                            <div class="letter-button" id="F">F</div>
+                            <div class="letter-button" id="G">G</div>
+                            <div class="letter-button" id="H">H</div>
+                            <div class="letter-button" id="I">I</div>
+                            <div class="letter-button" id="J">J</div>
+                            <div class="letter-button" id="K">K</div>
+                            <div class="letter-button" id="L">L</div>
+                            <div class="letter-button" id="M">M</div>
+                            <div class="letter-button" id="N">N</div>
+                            <div class="letter-button" id="O">O</div>
+                            <div class="letter-button" id="P">P</div>
+                            <div class="letter-button" id="Q">Q</div>
+                            <div class="letter-button" id="R">R</div>
+                            <div class="letter-button" id="S">S</div>
+                            <div class="letter-button" id="T">T</div>
+                            <div class="letter-button" id="U">U</div>
+                            <div class="letter-button" id="V">V</div>
+                            <div class="letter-button" id="W">W</div>
+                            <div class="letter-button" id="X">X</div>
+                            <div class="letter-button" id="Y">Y</div>
+                            <div class="letter-button" id="Z">Z</div>
+                        </div>
+                    </div>
+                    <div class="row  row-centered">
+                        <div id="hangman-graphic" class="col-xs-6 col-centered">
+                            <img src="img/hangman-graphic/background.png">
+                            <img class="hangman-frames" id="hangman-frame0"
+                                 src="img/hangman-graphic/hangman0.jpg">
+                            <img class="hangman-frames" id="hangman-frame1"
+                                 src="img/hangman-graphic/hangman1.jpg">
+                            <img class="hangman-frames" id="hangman-frame2"
+                                 src="img/hangman-graphic/hangman2.jpg">
+                            <img class="hangman-frames" id="hangman-frame3"
+                                 src="img/hangman-graphic/hangman3.jpg">
+                            <img class="hangman-frames" id="hangman-frame4"
+                                 src="img/hangman-graphic/hangman4.jpg">
+                            <img class="hangman-frames" id="hangman-frame5"
+                                 src="img/hangman-graphic/hangman5.jpg">
+                            <img class="hangman-frames" id="hangman-frame6"
+                                 src="img/hangman-graphic/hangman6.jpg">
+                            <img class="hangman-frames" id="hangman-frame7"
+                                 src="img/hangman-graphic/hangman7.jpg">
+
+                            <div class="hangman-controls"></div>
+                        </div>
+                        <div id="letter-graveyard" class="col-xs-6 col-centered">
+
+                        </div>
+                    </div>
+
+
+                    <div class="row text-center">
+                        <div id="word-to-guess"></div>
+                        <hr>
+                        <button class="btn btn-success reset">
+                            Reset
+                        </button>
+                        <button class="btn btn-success reset" id="exit-button">
+                            Exit
+                        </button>
+                    </div>
+                </div>
             </div>
+
+
         </div>
-    </div>
-</div>
-
-
-<div class="row">
-    <div id="alphabet-keypad" class="col-xs-10">
-        <div class="letter-button" id="A">A</div>
-        <div class="letter-button" id="B">B</div>
-        <div class="letter-button" id="C">C</div>
-        <div class="letter-button" id="D">D</div>
-        <div class="letter-button" id="E">E</div>
-        <div class="letter-button" id="F">F</div>
-        <div class="letter-button" id="G">G</div>
-        <div class="letter-button" id="H">H</div>
-        <div class="letter-button" id="I">I</div>
-        <div class="letter-button" id="J">J</div>
-        <div class="letter-button" id="K">K</div>
-        <div class="letter-button" id="L">L</div>
-        <div class="letter-button" id="M">M</div>
-        <div class="letter-button" id="N">N</div>
-        <div class="letter-button" id="O">O</div>
-        <div class="letter-button" id="P">P</div>
-        <div class="letter-button" id="Q">Q</div>
-        <div class="letter-button" id="R">R</div>
-        <div class="letter-button" id="S">S</div>
-        <div class="letter-button" id="T">T</div>
-        <div class="letter-button" id="U">U</div>
-        <div class="letter-button" id="V">V</div>
-        <div class="letter-button" id="W">W</div>
-        <div class="letter-button" id="X">X</div>
-        <div class="letter-button" id="Y">Y</div>
-        <div class="letter-button" id="Z">Z</div>
-    </div>
-</div>
-<div class="row  row-centered">
-    <div id="hangman-graphic" class="col-xs-6 col-centered">
-        <img src="img/hangman-graphic/background.png">
-        <img class="hangman-frames" id="hangman-frame0"
-             src="img/hangman-graphic/hangman0.jpg">
-        <img class="hangman-frames" id="hangman-frame1"
-             src="img/hangman-graphic/hangman1.jpg">
-        <img class="hangman-frames" id="hangman-frame2"
-             src="img/hangman-graphic/hangman2.jpg">
-        <img class="hangman-frames" id="hangman-frame3"
-             src="img/hangman-graphic/hangman3.jpg">
-        <img class="hangman-frames" id="hangman-frame4"
-             src="img/hangman-graphic/hangman4.jpg">
-        <img class="hangman-frames" id="hangman-frame5"
-             src="img/hangman-graphic/hangman5.jpg">
-        <img class="hangman-frames" id="hangman-frame6"
-             src="img/hangman-graphic/hangman6.jpg">
-        <img class="hangman-frames" id="hangman-frame7"
-             src="img/hangman-graphic/hangman7.jpg">
-
-        <div class="hangman-controls"></div>
-    </div>
-    <div id="letter-graveyard" class="col-xs-6 col-centered">
-
-    </div>
-</div>
-
-
-<div class="row text-center">
-    <div id="word-to-guess"></div>
-    <hr>
-    <button class="btn btn-success reset">
-        Reset
-    </button>
+    </main>
 </div>
 
 <script src="../../js/models.js"></script>
